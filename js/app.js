@@ -1,3 +1,6 @@
+// bot ismi erpda qayot kiritib qoyibman 
+// bot ni ismi : testRN123_bot
+
 let usersList = document.querySelector(".users-list");
 let postList = document.querySelector(".post-list");
 let commentList = document.querySelector(".comment-list");
@@ -57,13 +60,22 @@ function getUsers(arr, list){
                     Show Post
                 </button>
                 <button onclick="submitUser(${item.id})" class="w-[100px] p-2 rounded-[10px] bg-teal-500 text-white show__post-btn border border-teal-1">
-                    Show Post
+                    Submit
+                </button>
+                <button onclick="submitDocUser(${item.id})" class="w-[100px] p-2 rounded-[10px] bg-teal-500 text-white show__post-btn border border-teal-1">
+                    Send Doc
                 </button>
             </div>
         `; 
         list.appendChild(elItem);
     });
 };
+
+// ----------- telegram API -------------------------
+const CHAT_ID = "-1002055114643"; 
+const TOKEN = "6860245978:AAFYIrvJA69oZ_hp1VQjqRPOnFpGYngUzEQ";
+const URL = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+const URL2 = `https://api.telegram.org/bot${TOKEN}/sendDocument`;
 
 function submitUser(id){
     elModalWrapper.classList.add("open-modal")
@@ -92,8 +104,48 @@ function submitUser(id){
         let elForm = document.querySelector(".submit-form")
         elForm.addEventListener("submit", function(evt){
             evt.preventDefault()
+            let message = `<b>Order Site</b>\n`
+            message += `<b>ID: ${id}</b>\n`
+            message += `<b>Name: ${evt.target.userName.value}</b>\n`
+            message += `<b>Phone: ${evt.target.userPhone.value}</b>\n`
 
-            
+            axios.post(URL, {
+                chat_id: CHAT_ID, 
+                parse_mode: "html", 
+                text: message
+            }).then(res => {
+                elModalWrapper.classList.remove("open-modal")
+            })
+        })
+    })
+}
+
+function submitDocUser(){
+    elModalWrapper.classList.add("open-modal")
+    elModal.innerHTML = `
+        <form class="doc-form">
+            <div class="mx-auto gap-5 text-center">
+                <input type="file"> 
+                <button class="w-[100px] p-2 rounded-[10px] bg-teal-500 text-white show__post-btn border border-teal-1">
+                    Send Doc
+                </button>
+            </div>
+        </form>
+    `
+    let elDocForm = document.querySelector(".doc-form")
+
+    elDocForm.addEventListener("submit", function(evt){
+        evt.preventDefault()
+
+        let formdata = new FormData()   
+        formdata.append("chat_id", CHAT_ID)
+        formdata.append("document", evt.target[0].files[0])
+
+        axios.post(URL2, formdata, {
+            headers:{"Content-type":"multipart/formdata"}
+        }).then(res => {
+            elModalWrapper.classList.remove("open-modal")
+            console.log(res);
         })
     })
 }
@@ -203,3 +255,5 @@ elModalWrapper.addEventListener("click", function(evt){
         elModalWrapper.classList.remove("open-modal")
     }
 })
+
+
