@@ -191,7 +191,7 @@ function getPosts(arr, list){
                 ${item.body}
             </p>
             <div class="mt-3">
-                <button onclick="postBtnClick(${item.id})" class="w-[100px] p-2 rounded-[10px] bg-teal-500 text-white show__post-btn border border-teal-1">
+                <button onclick="postBtnClick(${item.id})" class="w-[150px] p-2 rounded-[10px] bg-teal-500 text-white show__post-btn border border-teal-1">
                     Show Comment
                 </button>
             </div>
