@@ -1,5 +1,6 @@
-// bot ismi erpda qayot kiritib qoyibman 
+// bot ismi erpda hato kiritib qoyibman 
 // bot ni ismi : testRN123_bot
+// kanalimni linki: https://t.me/test_r_n
 
 let usersList = document.querySelector(".users-list");
 let postList = document.querySelector(".post-list");
