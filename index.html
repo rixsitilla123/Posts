@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="flex justify-between">
+        <ul class="p-5 flex flex-col gap-5 w-[400px] rounded-[20px] users-list"></ul>
+        <ul class="p-5 flex flex-col gap-5 w-[400px] rounded-[20px] post-list"></ul>
+        <ul class="p-5 flex flex-col gap-5 w-[400px] rounded-[20px] comment-list"></ul>
+    </div>
+
+    <div class="modal-wrapper" id="modal-wrapper">
+        <div class="modal"></div>
+    </div>
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    clifford: '#da373d',
+                }
+            }
+        }
+    }
+</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/app.js"></script>
+</html>

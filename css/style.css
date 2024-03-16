@@ -1,0 +1,40 @@
+.modal-wrapper{
+    transition: all 0.5s;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+    transform: scale(0);
+}
+
+.open-modal{
+    transition: all 0.5s;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+    transform: scale(1);
+}
+
+.modal{
+    transition: all 0.5s;
+    position: absolute;
+    width: 750px;
+    padding: 20px;
+    background-color: brown;
+    right: 0;
+    left: 0;
+    margin: 150px auto;
+    border-radius: 20px;
+}
+
+.show__post-btn:hover{
+    border: 1px solid teal;
+    background-color: #fff;
+    color: teal; 
+}
+
